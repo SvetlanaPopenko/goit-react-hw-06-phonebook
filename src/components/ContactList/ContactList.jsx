@@ -3,11 +3,10 @@ import { getVisibleContacts } from 'components/service';
 import PropTypes from 'prop-types';
 import {
   ContactsList,
-  ContactItem,
-  ContactListButton,
-  ContactNumber,
-} from './ContactList.styled';
+  ContactItems,
+  } from './ContactList.styled';
 import { getContacts, getFilter } from 'redux/selectors';
+import { ContactItem } from 'components/ContactItem/ContactItem';
 
 const ContactList = () => {
     const contacts = useSelector(getContacts);
@@ -17,14 +16,9 @@ const ContactList = () => {
   return (
     <ContactsList>
     {visibleContacts.map(({ id, name, number }) => (
-      <ContactItem key={id}>
-        <p className="ClasList__name">
-          {name}: <ContactNumber>{number}</ContactNumber>
-        </p>
-        <ContactListButton >
-          Delete
-        </ContactListButton>
-      </ContactItem>
+      <ContactItems key={id}>
+       <ContactItem/>
+      </ContactItems>
     ))}
   </ContactsList>)
     
