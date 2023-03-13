@@ -1,8 +1,8 @@
-import React from 'react';
+import { useDispatch } from 'react-redux';
+import { addContact } from 'redux/actions';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import 'yup-phone';
-import PropTypes from 'prop-types';
 import {
   ContactFormWrap,
   ContactFormButton,
@@ -27,9 +27,11 @@ const initialValues = {
   number: '',
 };
 
-const ContactForm = ({ onSubmit }) => {
+const ContactForm = () => {
+  const dispatch = useDispatch();
+  
   const handleSubmit = (values, { resetForm }) => {
-    onSubmit(values);
+    dispatch(addContact(values));
     resetForm();
   };
 
@@ -55,7 +57,5 @@ const ContactForm = ({ onSubmit }) => {
     </Formik>
   );
 };
-ContactForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-};
+
 export default ContactForm;
