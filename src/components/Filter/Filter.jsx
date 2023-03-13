@@ -1,24 +1,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FilterText, FilterInput } from 'components/Filter/Filter.styled';
+import { useSelector } from 'react-redux';
+import { getFilter } from 'redux/selectors';
 
-const Filter = ({ value, onChange }) => {
+const Filter = () => {
+  const filter = useSelector(getFilter);
+
+  const onChangeFilter = evt => {
+    evt.preventDefault();
+
+  };
+
   return (
     <FilterText>
       Find contacts by name
       <FilterInput
         name="filter"
+        id="filter"
         type="text"
-        value={value}
-        onChange={onChange}
+        value={filter}
+        onChange={onChangeFilter}
       />
     </FilterText>
   );
 };
 
 Filter.propTypes = {
-  value: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
+  filter: PropTypes.string,
 };
 
 export default Filter;
