@@ -3,24 +3,24 @@ import { deleteContact } from 'redux/contactsSlice';
 import { ContactNumber, ContactListButton } from './ContactItem.styled';
 import PropTypes from 'prop-types';
 
-const ContactItem = ({ id, name, number }) => {
+const ContactItem = ({ name, number, id }) => {
   const dispatch = useDispatch();
     const handleDeleteContact = () => dispatch(deleteContact(id));
     
   return (
-    <div>
+    <>
       <p>
         {name}: <ContactNumber>{number}</ContactNumber>
       </p>
       <ContactListButton onClick={handleDeleteContact}>
         Delete
       </ContactListButton>
-    </div>
+    </>
   );
 };
 
 ContactItem.propTypes = {
-  id: PropTypes.string.isRequired,
+  id: PropTypes.string,
   name: PropTypes.string.isRequired,
   number: PropTypes.string.isRequired,
 };

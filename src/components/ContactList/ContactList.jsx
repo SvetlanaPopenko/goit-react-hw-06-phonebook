@@ -13,7 +13,7 @@ const ContactList = () => {
 
   return (
     <ContactsList>
-      {visibleContacts.map(({ id, name, number }) => (
+      {visibleContacts.map(({ name, number, id }) => (
         <ContactItems key={id}>
           <ContactItem name={name} number={number} />
         </ContactItems>

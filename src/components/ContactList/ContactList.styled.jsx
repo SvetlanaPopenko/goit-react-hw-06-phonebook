@@ -16,7 +16,7 @@ export const ContactItems = styled.li`
   display: flex;
   font-size: 30px;
   font-weight: 500;
-  width: 500px;
+  width: 600px;
   border: 2px solid yellow;
   border-radius: 5px;
   padding: 10px;
